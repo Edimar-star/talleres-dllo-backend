@@ -9,19 +9,14 @@ const resolvedor = (a, b, c, sign) => {
 const mejorParidad = (number) => !(number % 2)
 
 const peorParidad = (number) => {
-    if (number < 0 || number > 10) {
-        return undefined
-    }
-
-    let paridad = ""
     const paridades = [true, false, true, false, true, false, true, false, true, false, true]
     for (let index = 0; index <= 10; index++) {
         paridad = paridades[index]
 
-        if (index == number) break
+        if (index == number) {
+            return paridades[index]
+        }
     }
-
-    return paridad
 }
 
 console.log("Punto 1:", convertidorTemp(200))
