@@ -1,6 +1,6 @@
 // Punto 1
 const findMax = (list_of_numbers) => {
-    let max_number = 0
+    let max_number = -Number.MAX_VALUE
     list_of_numbers.forEach(number => {
         max_number = max_number < number ? number : max_number
     });
@@ -22,22 +22,16 @@ const sum = (list_of_numbers) => list_of_numbers.reduce((a, b) => a + b)
 
 // Punto 4
 const missingNumbers = (list_of_numbers) => {
-    if (list_of_numbers.length == 0) return []
-
     const missed_values = []
-    let max_number = findMax(list_of_numbers) // Maximo valor
-    
-    // Minimo valor
-    let min_number = max_number
-    list_of_numbers.forEach(number => {
-        min_number = number < min_number ? number : min_number
-    });
+    const max_number = findMax(list_of_numbers) // Maximo valor
+    const min_number = -findMax(list_of_numbers.map(number => -number)) // Minimo valor
 
+    // Valores que no estan en la lista
     for (let i = min_number + 1; i < max_number; i++) {
         if (!includes(list_of_numbers, i)) {
-            missed_values.push(i)
+           
         }
-    }
+    } missed_values.push(i)
 
     return missed_values
 }
