@@ -3,7 +3,7 @@ const findMax = (list_of_numbers) => {
     let max_number = -Number.MAX_VALUE
     list_of_numbers.forEach(number => {
         max_number = max_number < number ? number : max_number
-    });
+    })
     return max_number
 }
 
