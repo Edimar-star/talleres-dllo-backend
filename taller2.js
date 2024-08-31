@@ -30,7 +30,9 @@ const missingNumbers = (list_of_numbers) => {
     for (let i = min_number + 1; i < max_number; i++) {
         if (!includes(list_of_numbers, i)) {
             missed_values.push(i)
+           missed_values.push(i)
         }
+    }
     }
 
     return missed_values
