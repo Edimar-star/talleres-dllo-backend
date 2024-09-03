@@ -18,8 +18,7 @@ const conversionRomana = (string) => {
     const romanos = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
     return string.split("").map((key, index, arr) => {
         const value = romanos[key]
-        if (index + 1 == arr.length) return value
-        return romanos[key] < romanos[arr[index + 1]] ? -value : value
+        return (index + 1 == arr.length) ? value : value < romanos[arr[index + 1]] ? -value : value
     }).reduce((a, b) => a + b)
 }
 
