@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import cors from "cors";
 import express from "express";
 
+// API ROUTES IMPORTS
+import userRoutes from "./user/v1/user.routes";
 
 // MIDDLEWARES
 const app = express();
@@ -11,13 +13,16 @@ app.use(express.json());
 
 // ROUTES
 const SERVER_VERSION = "/api/v1/";
+app.use(SERVER_VERSION + "users", userRoutes);
 
 // FALLBACKS
-app.use((_: Request, response: Response) => {
+function routeNotFound(_: Request, response: Response) {
     response.status(404).json({
         message: "Route not found.",
     });
-});
+}
+  
+app.use(routeNotFound);
 
 // START SERVER
 const PORT = 8080;
