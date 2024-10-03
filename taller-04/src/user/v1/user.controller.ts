@@ -1,31 +1,31 @@
-import readUserbyHobby from "./read.user.byHobby";
-import readUserExists from "./read.user.exists";
-import readUserTeamExperience from "./read.user.teamExperience";
-import readUserByFaction from "./read.user.byFaction";
+import readUserbyHobbyAction from "./read.user.byHobby.action";
+import readUserExistsAction from "./read.user.exists.action";
+import readUserTeamExperienceAction from "./read.user.teamExperience.action";
+import readUserByFactionAction from "./read.user.byFaction.action";
 import createUserAction from "./create.user.action";
 import { users, UserType } from "./user.model";
 
-function usersByHobby(hobby: string | undefined): UserType[] {
+function readUsersByHobby(hobby: string | undefined): UserType[] {
     if (hobby === undefined) return [];
-    const users = readUserbyHobby(hobby);
+    const users = readUserbyHobbyAction(hobby);
     return users;
 }
 
-function userExists(id: number | undefined): boolean {
+function readUserExists(id: number | undefined): boolean {
     if (id === undefined) return false;
-    const exists = readUserExists(id);
+    const exists = readUserExistsAction(id);
     return exists;
 }
 
-function usersTeamExperience(team: string | undefined): number {
+function readUsersTeamExperience(team: string | undefined): number {
     if (team === undefined) return 0;
-    const experience = readUserTeamExperience(team);
+    const experience = readUserTeamExperienceAction(team);
     return experience;
 }
 
-function usersByFaction(faction: string | undefined): UserType[] {
+function readUsersByFaction(faction: string | undefined): UserType[] {
     if (faction === undefined) return [];
-    const users = readUserByFaction(faction);
+    const users = readUserByFactionAction(faction);
     return users;
 }
 
@@ -33,4 +33,4 @@ function createUser(user: UserType): boolean {
     return users.length < createUserAction(user);
 }
 
-export { usersByHobby, userExists, usersTeamExperience, usersByFaction, createUser };
+export { readUsersByHobby, readUserExists, readUsersTeamExperience, readUsersByFaction, createUser };
